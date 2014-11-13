@@ -1,6 +1,8 @@
 import random
 import numpy
 
+#Not a correct solution
+
 def mergeSort(low, high):
 	if low < high:
 		middle = low + (high - low)/2
@@ -29,56 +31,56 @@ def merge(low, middle, high):
 		k += 1
 		i += 1
 
-		
-
-
 def distance(a, b):
 	return b - a
 
-def binHandle(M, P, S, R):
-
-	i = len(dist) - 2
+def binHandler(M,P,S,R):
+	choice = 0
+	i = len(M) - 2
 	while i >= 0:
-		for j in range(i + 1, len(dist)):
-			if distance(dist[i], dist[j]) >= k:
-				choice = dist[j]
-				R[i] = choice
+		for j in range(i + 1, len(M)):
+			if distance(M[i], M[j]) >= k:
+				R[i] = M[j]
+				choice = 1
 				break
-		S[i] = max(profs[i] + S[j], S[i+1])
-
+		if choice == 1:
+			S[i] = max(P[i] + S[j], S[i+1])
+		else:
+			S[i] = S[i+1]
 		i -= 1
-	print S
-	
+	print S, R 
+
 def maxprofits(M, P, S, k):
 	maxProf = 0
 	global tempProfit	
 	tempProfit = 0
-	n = 1		
 	R = numpy.arange(10)
-	binHandle(M, P, S, R)
+	i = 0
+	binHandler(M,P,S,R)
 
 if __name__ == "__main__":
 	
+	arrayLen = 10
 	#distances each city is from the start of QVH
-	global dist
-	dist = numpy.arange(10)
-	global profs
-	profs = numpy.arange(10)
-	S = numpy.arange(10)
-	for i in range(10):
+
+	dist = numpy.arange(arrayLen)
+	global S
+	profs = numpy.arange(arrayLen)
+	S = numpy.arange(arrayLen)
+	for i in range(1, arrayLen):
 		#fills distances
 		dist[i] = (int)(random.random() * float(i * 15))
 		profs[i] = (int)(random.random() * float(i * 15))
-		if i == 9:
+		if i == arrayLen - 1:
 			S[i] = profs[i]
 		else:
 			S[i] = 0
 	
-	mergeSort(0, 9)
+	mergeSort(0, arrayLen - 1)
 	k = 10
-	print dist	
-	print profs
+	print "Sorted distances: ", dist	
+	print "Profits: ", profs
 
 	profit = maxprofits(dist, profs, S, k)
 	
-	print S[0]
+	print "Max Profit: ", S[0]
