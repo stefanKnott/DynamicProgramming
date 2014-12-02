@@ -1,5 +1,3 @@
-#Add knapsack, lcs, and edit distance!
-
 import random
 import numpy
 
@@ -11,7 +9,6 @@ def mergeSort(low, high):
 		merge(low, middle, high)
 
 def merge(low, middle, high):
-	
 	helper = numpy.arange(high + 1)
 	for i in range(low, high + 1):
 		helper[i] = dist[i]
@@ -35,6 +32,10 @@ def distance(a, b):
 	return b - a
 
 def binHandler(M, P, S, k):
+	if M is None or P is None or S is None or k is None:
+		return -1
+	if k < 0:
+		return -1
 	choice = 0
 	i = len(M) - 2
 	while i >= 0:
@@ -84,6 +85,9 @@ def maxProfWithDistConst():
 
 
 def commonSubSeq(x, y, c):
+	if x is None or y is None or c is None:
+		return -1
+
 	for i, x_letter in enumerate(x):
 		for j, y_letter in enumerate(y):
 			if i == 0 or j == 0:
@@ -98,10 +102,10 @@ def commonSubSeq(x, y, c):
 	#last index in matrix will hold the LCS value
 	return c[len(x)-1][len(y)-1]
 
-#Finds the longest common subsequence between 2 arrays
+#Finds the longest common subsequence between 2 arrays terminated with a 0
 def LCS():
-	dnaSeq1 = 'ACACCCTGTAAATAGAAACA'
-	dnaSeq2 = 'ATAAGCTGTATATAGCACCA'
+	dnaSeq1 = 'ACACCCTGTAAATAGAAAC0'
+	dnaSeq2 = 'ATAAGCTGTATATAGCACC0'
 
 	common = numpy.zeros((len(dnaSeq1), len(dnaSeq2)))
 
