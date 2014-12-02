@@ -1,0 +1,13 @@
+Programmed by Stefan Knott
+Fall 2014
+
+The program dynamicProgramming.py solves a few dynamic programming problems such as:
+	Longest common subsequence
+	Edit distance
+	Maximum profit problem given distant constraint between possible restaurants.
+
+The program dynamicTests.py runs some unit tests on the dynamicProgramming.py functions.
+
+How to run:
+	python dynamicProgramming.py
+	python dynamicTests.py
